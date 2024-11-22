@@ -1,4 +1,4 @@
-#include "matrix.h"
+#include "matrix/matrix.h"
 
 void matrix_add(const Matrix *a, const Matrix *b, Matrix *result) {
     for (int i = 0; i < a->rows; i++) {
