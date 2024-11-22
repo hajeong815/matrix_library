@@ -1,19 +1,19 @@
 #include "matrix.h"
 
-void matrix_add(int a[MATRIX_SIZE][MATRIX_SIZE], int b[MATRIX_SIZE][MATRIX_SIZE], int result[MATRIX_SIZE][MATRIX_SIZE]) {
-    for (int i = 0; i < MATRIX_SIZE; i++) {
-        for (int j = 0; j < MATRIX_SIZE; j++) {
-            result[i][j] = a[i][j] + b[i][j];
+void matrix_add(const Matrix *a, const Matrix *b, Matrix *result) {
+    for (int i = 0; i < a->rows; i++) {
+        for (int j = 0; j < a->cols; j++) {
+            result->data[i][j] = a->data[i][j] + b->data[i][j];
         }
     }
 }
 
-void matrix_multiply(int a[MATRIX_SIZE][MATRIX_SIZE], int b[MATRIX_SIZE][MATRIX_SIZE], int result[MATRIX_SIZE][MATRIX_SIZE]) {
-    for (int i = 0; i < MATRIX_SIZE; i++) {
-        for (int j = 0; j < MATRIX_SIZE; j++) {
-            result[i][j] = 0;
-            for (int k = 0; k < MATRIX_SIZE; k++) {
-                result[i][j] += a[i][k] * b[k][j];
+void matrix_multiply(const Matrix *a, const Matrix *b, Matrix *result) {
+    for (int i = 0; i < a->rows; i++) {
+        for (int j = 0; j < b->cols; j++) {
+            result->data[i][j] = 0;
+            for (int k = 0; k < a->cols; k++) {
+                result->data[i][j] += a->data[i][k] * b->data[k][j];
             }
         }
     }
